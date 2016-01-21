@@ -1,12 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-function topPosition(domElt) {
-  if (!domElt) {
-    return 0;
-  }
-  return domElt.offsetTop + topPosition(domElt.offsetParent);
-}
+import {topPosition} from './Utilities/DOMPositionUtils';
 
 export default class ReduxInfiniteScroll extends Component {
 

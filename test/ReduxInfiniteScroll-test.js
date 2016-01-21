@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react/lib/ReactTestUtils';
-import ReduxInfiniteScroll from '../ReduxInfiniteScroll';
+import TestUtils from 'react-addons-test-utils';
+import ReduxInfiniteScroll from '../src/ReduxInfiniteScroll';
 
 describe('ReduxInfiniteScroll', () => {
   let loadMore, items;

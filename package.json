@@ -1,10 +1,15 @@
 {
   "name": "redux-infinite-scroll",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "React infinite scroll component designed for a Redux data-flow.",
-  "main": "index.js",
+  "main": "lib/ReduxInfiniteScroll.js",
   "scripts": {
-    "test": "test"
+    "test": "karma start karma.conf.js",
+    "test-watch": "karma start karma.conf.js --single-run=false",
+    "test-single": "karma start karma.conf.js",
+    "transpile": "babel src --out-dir lib",
+    "build": "webpack --config production.webpack.js",
+    "build-prod": "webpack --config lib.webpack.js"
   },
   "repository": {
     "type": "git",
@@ -21,5 +26,30 @@
   "bugs": {
     "url": "https://github.com/RealScout/redux-infinite-scroll/issues"
   },
-  "homepage": "https://github.com/RealScout/redux-infinite-scroll#readme"
+  "homepage": "https://github.com/RealScout/redux-infinite-scroll#readme",
+  "devDependencies": {
+    "react": "^0.14.6",
+    "react-addons-test-utils": "^0.14.6",
+    "react-dom": "^0.14.6",
+    "babel": "^6.3.26",
+    "babel-core": "^6.3.15",
+    "babel-loader": "^6.2.0",
+    "babel-plugin-react-transform": "^2.0.0-beta1",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "lodash": "~3.1.0",
+    "webpack": "^1.12.9",
+    "jasmine": "^2.3.2",
+    "jasmine-core": "^2.3.4",
+    "karma": "^0.13.10",
+    "karma-cli": "^0.1.1",
+    "karma-jasmine": "^0.3.6",
+    "karma-phantomjs-launcher": "^0.2.1",
+    "karma-sourcemap-loader": "^0.3.6",
+    "karma-webpack": "^1.7.0",
+    "phantomjs": "^1.9.18",
+    "webpack-dev-middleware": "^1.4.0",
+    "webpack-dev-server": "^1.10.1",
+    "webpack-hot-middleware": "^2.6.0"
+  }
 }
