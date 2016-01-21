@@ -1,0 +1,25 @@
+{
+  "name": "redux-infinite-scroll",
+  "version": "1.0.0",
+  "description": "React infinite scroll component designed for a Redux data-flow.",
+  "main": "index.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RealScout/redux-infinite-scroll.git"
+  },
+  "keywords": [
+    "React",
+    "Redux",
+    "Infinite",
+    "Scroll"
+  ],
+  "author": "RealScoutTech",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RealScout/redux-infinite-scroll/issues"
+  },
+  "homepage": "https://github.com/RealScout/redux-infinite-scroll#readme"
+}
