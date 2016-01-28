@@ -17,25 +17,47 @@ npm install redux-infinite-scroll --save
 
 ## Usage
 
-In order to use it in your React app, simply import it.
+In order to use it in your React app, simply import it and follow the example below.  The component expects the items 
+prop to receive an array of React components that it then renders to the DOM.  The `loadMore` prop
+expects a function that updates the Redux store with more items and therefore causes React to re-render the component.
 
 ##### ES6 format
  
 ```javascript
 
-
-// ChatApp.jsx
+// MessageList.jsx
 
 import InfiniteScroll from 'redux-infinite-scroll';
 import ChatActions from './ChatActions';
 
-_loadMore() {
-  this.props.dispatch(ChatActions.fetchMessages())
+class MessageList extends Component {
+  _loadMore() {
+    this.props.dispatch(ChatActions.fetchMessages())
+  }
+  
+  _renderMessages() {
+    return _.map(this.props.messages, (msg) => {
+      return(
+          <div>{msg}</div>
+      )
+    })
+  }
+  
+  render() {
+    return (
+        <InfiniteScroll
+          items={this._renderMessages.bind(this)}
+          loadMore={this._loadMore.bind(this)}
+        />
+    )
+  }
 }
 
-<InfiniteScroll items={this.props.messages} loadMore={this._loadMore.bind(this)} />
+```
 
+Where your Redux action and reducer might look something like this:
 
+``` javascript
 // ChatActions.js
 
 export function fetchMessages(params) {
