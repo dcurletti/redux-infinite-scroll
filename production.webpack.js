@@ -11,11 +11,21 @@ config.module.loaders.push(
   {
     test: /\.jsx?$/,
     exclude: /node_modules/,
-    loaders: ['babel-loader']
+    loaders: ['expose?ReduxInfiniteScroll', 'babel-loader']
   }
 );
 
 config.plugins.push(
-  new webpack.optimize.UglifyJsPlugin({minimize: true}),
+  //new webpack.optimize.UglifyJsPlugin({minimize: true}),
   new webpack.optimize.OccurenceOrderPlugin()
 );
+
+config.externals = [
+  {
+    'react': 'React',
+    'react-dom': 'ReactDOM',
+    'lodash': '_'
+  }
+];
+
+config.target = 'web';
