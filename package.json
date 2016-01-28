@@ -4,12 +4,10 @@
   "description": "React infinite scroll component designed for a Redux data-flow.",
   "main": "lib/ReduxInfiniteScroll.js",
   "scripts": {
-    "test": "karma start karma.conf.js",
+    "test": "npm run transpile && karma start karma.conf.js",
     "test-watch": "karma start karma.conf.js --single-run=false",
-    "test-single": "karma start karma.conf.js",
     "transpile": "babel src --out-dir lib",
-    "build": "webpack --config production.webpack.js",
-    "build-prod": "webpack --config lib.webpack.js"
+    "build": "webpack --config production.webpack.js"
   },
   "repository": {
     "type": "git",
