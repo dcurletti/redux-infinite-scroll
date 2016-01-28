@@ -1,3 +1,5 @@
+[![Circle CI](https://circleci.com/gh/RealScout/redux-infinite-scroll.svg?style=svg)](https://circleci.com/gh/RealScout/redux-infinite-scroll)
+
 | Props  	|  Type 	|  Required | Default 	| Description  	|
 |---	|---	|---	|---	|--- |
 | elementIsScrollable  	| bool  	| no |  true 	| Defines whether the div will have a fixed height and listens to the div's overflow event or instead have a non-fixed height and listen to the window scroll event
