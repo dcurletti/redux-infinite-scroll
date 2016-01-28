@@ -7,7 +7,7 @@ A stateless React infinite scroll component meant for usage within Redux.
 
 ## Demo & Examples
 
-TODO
+http://realscout.github.io/redux-infinite-scroll/
 
 ## Installation
 
