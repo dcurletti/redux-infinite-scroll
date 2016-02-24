@@ -111,6 +111,6 @@ ReduxInfiniteScroll.defaultProps = {
   threshold: 100,
   hasMore: true,
   loadingMore: false,
-  loader: <div style={{'text-align': 'center'}}>Loading...</div>,
+  loader: <div style={{textAlign: 'center'}}>Loading...</div>,
   showLoader: true
 };
