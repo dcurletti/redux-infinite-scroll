@@ -79,13 +79,14 @@ export default class ReduxInfiniteScroll extends Component {
   }
 
   render () {
+    const Holder = this.props.holderType;
     return (
-        <div className="rs-infinite-scroll" style={{height: this.props.containerHeight}}>
+        <Holder className="rs-infinite-scroll" style={{height: this.props.containerHeight}}>
           {this.props.items.map((item, i) => {
             return item;
           })}
           {this.renderLoader()}
-        </div>
+        </Holder>
     )
   }
 }
@@ -102,7 +103,8 @@ ReduxInfiniteScroll.propTypes = {
   loader: React.PropTypes.any,
   showLoader: React.PropTypes.bool,
   loadMore: React.PropTypes.func.isRequired,
-  items: React.PropTypes.array.isRequired
+  items: React.PropTypes.array.isRequired,
+    holderType: React.PropTypes.string
 };
 
 ReduxInfiniteScroll.defaultProps = {
@@ -112,5 +114,6 @@ ReduxInfiniteScroll.defaultProps = {
   hasMore: true,
   loadingMore: false,
   loader: <div style={{textAlign: 'center'}}>Loading...</div>,
-  showLoader: true
+  showLoader: true,
+  holderType: 'div'
 };
