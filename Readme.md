@@ -101,6 +101,7 @@ function chatReducer(state=initialState, action=undefined) {
 | loadMore  	|  function | yes  |undefined| The function is called when the component has reached the `threshold` and `hasMore` is true.
 | items | array  	|yes|undefined| The array of elements waiting to be rendered.  Normally each item in the array is a React component.
 | holderType | string  	|no|div| The type the loader is rendered as, could be `ul`, `dl`, etc.
+| className | string  	|no|''| Any additional classes to be added to the holder.
 
 ## Credits
 
