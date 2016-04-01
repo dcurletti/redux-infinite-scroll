@@ -80,8 +80,10 @@ export default class ReduxInfiniteScroll extends Component {
 
   render () {
     const Holder = this.props.holderType;
+    const className = "rs-infinite-scroll " + this.props.className;    
+
     return (
-        <Holder className="rs-infinite-scroll" style={{height: this.props.containerHeight}}>
+        <Holder className={ className } style={{height: this.props.containerHeight}}>
           {this.props.items.map((item, i) => {
             return item;
           })}
@@ -108,6 +110,7 @@ ReduxInfiniteScroll.propTypes = {
 };
 
 ReduxInfiniteScroll.defaultProps = {
+  className: '',
   elementIsScrollable: true,
   containerHeight: '100%',
   threshold: 100,
