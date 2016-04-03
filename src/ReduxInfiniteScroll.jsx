@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import classNames from 'classnames'
 
 import {topPosition} from './Utilities/DOMPositionUtils';
 
@@ -80,7 +81,11 @@ export default class ReduxInfiniteScroll extends Component {
 
   render () {
     const Holder = this.props.holderType;
-    const className = "rs-infinite-scroll " + this.props.className;    
+
+    const className = classNames(
+      "rs-infinite-scroll",
+      this.props.className
+    )
 
     return (
         <Holder className={ className } style={{height: this.props.containerHeight}}>
