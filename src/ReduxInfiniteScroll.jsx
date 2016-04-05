@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import ImmutablePropTypes from 'react-immutable-proptypes';
+
 import {topPosition} from './Utilities/DOMPositionUtils';
 
 export default class ReduxInfiniteScroll extends Component {
@@ -51,9 +53,10 @@ export default class ReduxInfiniteScroll extends Component {
 
   scrollListener() {
     // This is to prevent the upcoming logic from toggling a load more before
-    // redux has passed any data to the component
+    // any data has been passed to the component
     if (this.props.items <= 0) return;
 
+    // Need to find better way around this setTimeout
     setTimeout(() => {
       let bottomPosition = this.props.elementIsScrollable ? this._elScrollListener() : this._windowScrollListener();
 
@@ -61,13 +64,19 @@ export default class ReduxInfiniteScroll extends Component {
         this.detachScrollListener();
         this.props.loadMore();
       }
-    }, 0);
+    });
   }
 
   detachScrollListener () {
     let el = this._findElement();
     el.removeEventListener('scroll', this.scrollFunction, true);
     el.removeEventListener('resize', this.scrollFunction, true);
+  }
+
+  _renderOptions() {
+    const allItems = this.props.children.concat(this.props.items);
+
+    return [allItems, this.renderLoader()];
   }
 
   componentWillUnmount () {
@@ -78,17 +87,20 @@ export default class ReduxInfiniteScroll extends Component {
     return (this.props.loadingMore && this.props.showLoader) ? this.props.loader : undefined;
   }
 
+  _assignHolderClass() {
+    let additionalClass;
+    additionalClass = (typeof this.props.className === 'function') ? this.props.className() : this.props.className;
+
+    return 'redux-infinite-scroll ' + additionalClass;
+  }
+
   render () {
     const Holder = this.props.holderType;
-    const className = "rs-infinite-scroll " + this.props.className;    
 
     return (
-        <Holder className={ className } style={{height: this.props.containerHeight}}>
-          {this.props.items.map((item, i) => {
-            return item;
-          })}
-          {this.renderLoader()}
-        </Holder>
+      <Holder className={ this._assignHolderClass() } style={{height: this.props.containerHeight}}>
+        {this._renderOptions()}
+      </Holder>
     )
   }
 }
@@ -105,8 +117,19 @@ ReduxInfiniteScroll.propTypes = {
   loader: React.PropTypes.any,
   showLoader: React.PropTypes.bool,
   loadMore: React.PropTypes.func.isRequired,
-  items: React.PropTypes.array.isRequired,
-    holderType: React.PropTypes.string
+  items: React.PropTypes.oneOfType([
+    ImmutablePropTypes.list,
+    React.PropTypes.array
+  ]),
+  children: React.PropTypes.oneOfType([
+    ImmutablePropTypes.list,
+    React.PropTypes.array
+  ]),
+  holderType: React.PropTypes.string,
+  className: React.PropTypes.oneOfType([
+    React.PropTypes.string,
+    React.PropTypes.func
+  ])
 };
 
 ReduxInfiniteScroll.defaultProps = {
@@ -118,5 +141,7 @@ ReduxInfiniteScroll.defaultProps = {
   loadingMore: false,
   loader: <div style={{textAlign: 'center'}}>Loading...</div>,
   showLoader: true,
-  holderType: 'div'
+  holderType: 'div',
+  children: [],
+  items: []
 };

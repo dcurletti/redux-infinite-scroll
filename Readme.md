@@ -17,9 +17,12 @@ npm install redux-infinite-scroll --save
 
 ## Usage
 
-In order to use it in your React app, simply import it and follow the example below.  The component expects the items 
-prop to receive an array of React components that it then renders to the DOM.  The `loadMore` prop
-expects a function that updates the Redux store with more items and therefore causes React to re-render the component.
+In order to use it in your React app, simply import it and follow the example below.  The component expects to receive 
+child elements that it then injects into the DOM.  The `loadMore` prop expects a function that requests for more 
+items to be loaded once the container/window has reached the bottom `threshold`.  If there are no more items left to 
+be passed to the component, make sure to set the `hasMore` prop to be `false`.  **Important** If you are using 
+an element as the scrollable component, rather than the window, you MUST pass a fixed height to the `containerHeight`
+prop.
 
 ##### ES6 format
  
@@ -94,14 +97,15 @@ function chatReducer(state=initialState, action=undefined) {
 | elementIsScrollable  	| bool  	| no |  true 	| Defines whether the div will have a fixed height and listens to the div's overflow event or instead have a non-fixed height and listen to the window scroll event
 | containerHeight  	|  integer or string 	| no  	| '100%' | Sets an inline style on the height of the topmost div.
 | threshold | integer | no | 100 | The number of pixels 
-| hasMore  	|  bool 	| no  	| true  	| Whether there are more items waiting to be displayed
+| hasMore  	|  bool 	| no  	| true  	| Whether there are more items waiting to be displayed. Set this to false once all of the items have been passed down to either `items` or `children`.
 | loadingMore |  bool 	| no  	|false| A prop that should be set to `true` by the parent component whenever the `loadMore` function gets invoked, and then toggled to `false` once that function has finished updating the `items` prop.
 | loader  	|  any | no|  Loading... 	| The value of this prop gets injected as the last element of the parent div when `hasMore` `loadingMore` and `showLoader` are all `true`.
-| showLoader  	| bool  	| true  	|   	| Whether to show the loader when the `loadingMore` property is `true`
+| showLoader  	| bool  	| false  	|  true 	| Whether to show the loader when the `loadingMore` property is `true`
 | loadMore  	|  function | yes  |undefined| The function is called when the component has reached the `threshold` and `hasMore` is true.
-| items | array  	|yes|undefined| The array of elements waiting to be rendered.  Normally each item in the array is a React component.
 | holderType | string  	|no|div| The type the loader is rendered as, could be `ul`, `dl`, etc.
 | className | string  	|no|''| Any additional classes to be added to the holder.
+| items | array || Immutable List 	|no|[]| The array of elements waiting to be rendered.  Use either this or `children`. **Deprecated.** 
+| children | array || Immutable List 	|no| [] | The array of elements waiting to be rendered. Use either this or `items`.
 
 ## Credits
 

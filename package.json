@@ -1,6 +1,6 @@
 {
   "name": "redux-infinite-scroll",
-  "version": "1.0.2",
+  "version": "1.0.4",
   "description": "React infinite scroll component designed for a Redux data-flow.",
   "main": "lib/ReduxInfiniteScroll.js",
   "scripts": {
@@ -50,8 +50,10 @@
     "webpack-hot-middleware": "^2.6.0"
   },
   "dependencies": {
+    "immutable": "^3.7.6",
+    "lodash": "~3.1.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
-    "lodash": "~3.1.0"
+    "react-immutable-proptypes": "^1.7.0"
   }
 }
