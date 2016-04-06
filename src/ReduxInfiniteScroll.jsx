@@ -54,17 +54,14 @@ export default class ReduxInfiniteScroll extends Component {
   scrollListener() {
     // This is to prevent the upcoming logic from toggling a load more before
     // any data has been passed to the component
-    if (this.props.items <= 0) return;
+    if (this._totalItemsSize() <= 0) return;
 
-    // Need to find better way around this setTimeout
-    setTimeout(() => {
-      let bottomPosition = this.props.elementIsScrollable ? this._elScrollListener() : this._windowScrollListener();
+    let bottomPosition = this.props.elementIsScrollable ? this._elScrollListener() : this._windowScrollListener();
 
-      if (bottomPosition < Number(this.props.threshold)) {
-        this.detachScrollListener();
-        this.props.loadMore();
-      }
-    });
+    if (bottomPosition < Number(this.props.threshold)) {
+      this.detachScrollListener();
+      this.props.loadMore();
+    }
   }
 
   detachScrollListener () {
@@ -77,6 +74,13 @@ export default class ReduxInfiniteScroll extends Component {
     const allItems = this.props.children.concat(this.props.items);
 
     return [allItems, this.renderLoader()];
+  }
+
+  _totalItemsSize() {
+    let totalSize;
+    totalSize += (this.props.children.size) ? this.props.children.size : this.props.children.length;
+    totalSize += (this.props.items.size) ? this.props.items.size : this.props.items.length;
+    return totalSize;
   }
 
   componentWillUnmount () {
