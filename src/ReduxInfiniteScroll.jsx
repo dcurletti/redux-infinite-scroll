@@ -73,7 +73,7 @@ export default class ReduxInfiniteScroll extends Component {
   _renderOptions() {
     const allItems = this.props.children.concat(this.props.items);
 
-    return [allItems, this.renderLoader()];
+    return allItems;
   }
 
   _totalItemsSize() {
@@ -104,6 +104,7 @@ export default class ReduxInfiniteScroll extends Component {
     return (
       <Holder className={ this._assignHolderClass() } style={{height: this.props.containerHeight}}>
         {this._renderOptions()}
+        {this.renderLoader()}
       </Holder>
     )
   }
