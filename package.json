@@ -55,7 +55,5 @@
     "react-immutable-proptypes": "^1.7.0"
   },
   "dependencies": {
-    "immutable": "^3.7.6",
-    "lodash": "~3.1.0"
   }
 }
