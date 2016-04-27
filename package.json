@@ -1,13 +1,15 @@
 {
   "name": "redux-infinite-scroll",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "description": "React infinite scroll component designed for a Redux data-flow.",
   "main": "lib/ReduxInfiniteScroll.js",
   "scripts": {
     "test": "npm run transpile && karma start karma.conf.js",
     "test-watch": "karma start karma.conf.js --single-run=false",
     "transpile": "babel src --out-dir lib",
-    "build": "webpack --config production.webpack.js"
+    "build": "webpack --config production.webpack.js",
+    "build:min": "webpack --config min.webpack.js",
+    "build:release": "npm run transpile && npm run build && npm run build:min"
   },
   "repository": {
     "type": "git",
@@ -47,13 +49,13 @@
     "webpack": "^1.12.9",
     "webpack-dev-middleware": "^1.4.0",
     "webpack-dev-server": "^1.10.1",
-    "webpack-hot-middleware": "^2.6.0"
-  },
-  "dependencies": {
-    "immutable": "^3.7.6",
-    "lodash": "~3.1.0",
+    "webpack-hot-middleware": "^2.6.0",
     "react": "^0.14.6",
     "react-dom": "^0.14.6",
     "react-immutable-proptypes": "^1.7.0"
+  },
+  "dependencies": {
+    "immutable": "^3.7.6",
+    "lodash": "~3.1.0"
   }
 }

@@ -15,6 +15,31 @@ http://realscout.github.io/redux-infinite-scroll/
 npm install redux-infinite-scroll --save
 ```
 
+## Importing Via AMD/CommonJS
+
+##### ES6 format
+```javascript
+import ReduxInfiniteScroll from 'redux-infinite-scroll';
+```
+##### ES5 format
+```javascript
+var ReduxInfiniteScroll = require('redux-infinite-scroll');
+```
+
+## Importing Via Script Tag
+If you decide to use either one of the distribution files found in `/dist`, then you can access the `ReduxInfiniteScroll` via a global variable.
+
+##### ES6 format
+```javascript
+ReduxInfiniteScroll
+```
+##### ES5 format
+```javascript
+ReduxInfiniteScroll.default;
+```
+The difference is due to the `ReduxInfiniteScroll` being an ES6 module and therefore having a different export syntax than ES5.
+
+
 ## Usage
 
 In order to use it in your React app, simply import it and follow the example below.  The component expects to receive 

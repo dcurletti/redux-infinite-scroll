@@ -4,8 +4,15 @@ var path = require('path');
 var config = module.exports = require('./main.webpack.js');
 
 config.output = _.merge(config.output, {
-  filename: 'redux-infinite-scroll.min.js'
+  filename: 'redux-infinite-scroll.js',
+  libraryTarget: 'umd',
+  library: 'ReduxInfiniteScroll'
 });
+
+config.externals = {
+  'react': 'React',
+  'react-dom': 'ReactDOM'
+};
 
 config.module.loaders.push(
   {
@@ -16,6 +23,5 @@ config.module.loaders.push(
 );
 
 config.plugins.push(
-  new webpack.optimize.UglifyJsPlugin({minimize: true}),
   new webpack.optimize.OccurenceOrderPlugin()
 );

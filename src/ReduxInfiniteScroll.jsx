@@ -1,11 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
-import ImmutablePropTypes from 'react-immutable-proptypes';
+//import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import {topPosition} from './Utilities/DOMPositionUtils';
 
-export default class ReduxInfiniteScroll extends Component {
+export default class ReduxInfiniteScroll extends React.Component {
 
   constructor(props) {
     super(props);
@@ -123,11 +123,11 @@ ReduxInfiniteScroll.propTypes = {
   showLoader: React.PropTypes.bool,
   loadMore: React.PropTypes.func.isRequired,
   items: React.PropTypes.oneOfType([
-    ImmutablePropTypes.list,
+    //ImmutablePropTypes.list,
     React.PropTypes.array
   ]),
   children: React.PropTypes.oneOfType([
-    ImmutablePropTypes.list,
+    //ImmutablePropTypes.list,
     React.PropTypes.array
   ]),
   holderType: React.PropTypes.string,
