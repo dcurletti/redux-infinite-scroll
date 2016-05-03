@@ -1,6 +1,6 @@
 module.exports = function(config) {
   config.set({
-    browsers: ['PhantomJS'],
+    browsers: ['PhantomJS'], // ['Chrome'], for debugging
     files: [
       { pattern: 'testing.webpack.js', watched: false }
     ],
