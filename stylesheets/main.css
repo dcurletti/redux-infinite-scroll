@@ -1,0 +1,19 @@
+.redux-infinite-scroll {
+  overflow: scroll;
+  border: 1px black solid;
+}
+
+.item {
+  text-align: center;
+  padding: 5px 0 5px 0;
+  border-bottom: 1px solid grey;
+
+}
+
+.nav-bar {
+  margin-top: 30px;
+}
+
+.nav-bar .selected {
+  background-color: rgba(21, 88, 152, 0.44);
+}

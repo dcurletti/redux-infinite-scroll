@@ -33,24 +33,11 @@ class MessageList extends React.Component {
     })
   }
 
-  _renderSomething() {
-    return (
-        <InfiniteScroll loadingMore={this.state.loadingMore} containerHeight="300px" loadMore={this._loadMore.bind(this)}>
-          this._renderMessages()
-        </InfiniteScroll>
-    )
-  }
-
-
-
   render() {
     return (
-      <div>
-        <span></span>
-        <InfiniteScroll loadingMore={this.state.loadingMore} containerHeight="300px" loadMore={this._loadMore.bind(this)}>
+        <InfiniteScroll loadingMore={this.state.loadingMore} elementIsScrollable={false} loadMore={this._loadMore.bind(this)}>
           {this._renderMessages()}
         </InfiniteScroll>
-      </div>
     )
   }
 }
