@@ -1,5 +1,7 @@
-[![Circle CI](https://circleci.com/gh/RealScout/redux-infinite-scroll.svg?style=svg)](https://circleci.com/gh/RealScout/redux-infinite-scroll)    [![npm version](https://badge.fury.io/js/redux-infinite-scroll.svg)](https://badge.fury.io/js/redux-infinite-scroll)    [![Package Quality](http://npm.packagequality.com/shield/redux-infinite-scroll.svg)](http://packagequality.com/#?package=redux-infinite-scroll)
-
+[![Circle CI](https://circleci.com/gh/RealScout/redux-infinite-scroll.svg?style=svg)](https://circleci.com/gh/RealScout/redux-infinite-scroll)
+[![npm version](https://badge.fury.io/js/redux-infinite-scroll.svg)](https://badge.fury.io/js/redux-infinite-scroll)
+[![npm dm](https://img.shields.io/npm/dm/redux-infinite-scroll.svg)](https://www.npmjs.com/package/redux-infinite-scroll)
+[![Package Quality](http://npm.packagequality.com/shield/redux-infinite-scroll.svg)](http://packagequality.com/#?package=redux-infinite-scroll)
 
 # Redux Infinite Scroll
 
