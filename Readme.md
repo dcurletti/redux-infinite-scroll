@@ -76,7 +76,7 @@ class MessageList extends Component {
   render() {
     return (
         <InfiniteScroll
-          items={this._renderMessages.bind(this)}
+          items={this._renderMessages()}
           loadMore={this._loadMore.bind(this)}
         />
     )
