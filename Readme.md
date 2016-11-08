@@ -7,6 +7,9 @@
 
 A stateless React infinite scroll component meant for usage within Redux.
 
+## **Important**
+If you are using an element as the scrollable component, rather than the window, you **MUST** pass a fixed height to the containerHeight prop (many issues will be fixed by following this step).
+
 ## Demo & Examples
 
 http://realscout.github.io/redux-infinite-scroll/
