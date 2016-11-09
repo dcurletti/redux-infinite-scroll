@@ -95,7 +95,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  function ReduxInfiniteScroll(props) {
 	    _classCallCheck(this, ReduxInfiniteScroll);
 
-	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ReduxInfiniteScroll).call(this, props));
+	    var _this = _possibleConstructorReturn(this, (ReduxInfiniteScroll.__proto__ || Object.getPrototypeOf(ReduxInfiniteScroll)).call(this, props));
 
 	    _this.scrollFunction = _this.scrollListener.bind(_this);
 	    return _this;
@@ -129,6 +129,16 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: '_elScrollListener',
 	    value: function _elScrollListener() {
 	      var el = _reactDom2.default.findDOMNode(this);
+
+	      if (this.props.horizontal) {
+	        var leftScrollPos = el.scrollLeft;
+	        var totalContainerWidth = el.scrollWidth;
+	        var containerFixedWidth = el.offsetWidth;
+	        var rightScrollPos = leftScrollPos + containerFixedWidth;
+
+	        return totalContainerWidth - rightScrollPos;
+	      }
+
 	      var topScrollPos = el.scrollTop;
 	      var totalContainerHeight = el.scrollHeight;
 	      var containerFixedHeight = el.offsetHeight;
@@ -140,6 +150,15 @@ return /******/ (function(modules) { // webpackBootstrap
 	    key: '_windowScrollListener',
 	    value: function _windowScrollListener() {
 	      var el = _reactDom2.default.findDOMNode(this);
+
+	      if (this.props.horizontal) {
+	        var windowScrollLeft = window.pageXOffset !== undefined ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+	        var elTotalWidth = (0, _DOMPositionUtils.leftPosition)(el) + el.offsetWidth;
+	        var currentRightPosition = elTotalWidth - windowScrollLeft - window.innerWidth;
+
+	        return currentRightPosition;
+	      }
+
 	      var windowScrollTop = window.pageYOffset !== undefined ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
 	      var elTotalHeight = (0, _DOMPositionUtils.topPosition)(el) + el.offsetHeight;
 	      var currentBottomPosition = elTotalHeight - windowScrollTop - window.innerHeight;
@@ -224,6 +243,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  elementIsScrollable: _react2.default.PropTypes.bool,
 	  containerHeight: _react2.default.PropTypes.oneOfType([_react2.default.PropTypes.number, _react2.default.PropTypes.string]),
 	  threshold: _react2.default.PropTypes.number,
+	  horizontal: _react2.default.PropTypes.bool,
 	  hasMore: _react2.default.PropTypes.bool,
 	  loadingMore: _react2.default.PropTypes.bool,
 	  loader: _react2.default.PropTypes.any,
@@ -244,6 +264,7 @@ return /******/ (function(modules) { // webpackBootstrap
 	  elementIsScrollable: true,
 	  containerHeight: '100%',
 	  threshold: 100,
+	  horizontal: false,
 	  hasMore: true,
 	  loadingMore: false,
 	  loader: _react2.default.createElement(
@@ -267,11 +288,19 @@ return /******/ (function(modules) { // webpackBootstrap
 	  value: true
 	});
 	exports.topPosition = topPosition;
+	exports.leftPosition = leftPosition;
 	function topPosition(domElt) {
 	  if (!domElt) {
 	    return 0;
 	  }
 	  return domElt.offsetTop + topPosition(domElt.offsetParent);
+	}
+
+	function leftPosition(domElt) {
+	  if (!domElt) {
+	    return 0;
+	  }
+	  return domElt.offsetLeft + leftPosition(domElt.offsetParent);
 	}
 
 /***/ },
