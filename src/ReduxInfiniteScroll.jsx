@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 
 //import ImmutablePropTypes from 'react-immutable-proptypes';
 
-import {topPosition} from './Utilities/DOMPositionUtils';
+import {topPosition, leftPosition} from './Utilities/DOMPositionUtils';
 
 export default class ReduxInfiniteScroll extends React.Component {
 
@@ -34,6 +34,16 @@ export default class ReduxInfiniteScroll extends React.Component {
 
   _elScrollListener() {
     let el = ReactDOM.findDOMNode(this);
+
+    if (this.props.horizontal) {
+      let leftScrollPos = el.scrollLeft;
+      let totalContainerWidth = el.scrollWidth;
+      let containerFixedWidth = el.offsetWidth;
+      let rightScrollPos = leftScrollPos + containerFixedWidth;
+
+      return (totalContainerWidth - rightScrollPos);
+    }
+
     let topScrollPos = el.scrollTop;
     let totalContainerHeight = el.scrollHeight;
     let containerFixedHeight = el.offsetHeight;
@@ -44,6 +54,15 @@ export default class ReduxInfiniteScroll extends React.Component {
 
   _windowScrollListener() {
     let el = ReactDOM.findDOMNode(this);
+
+    if(this.props.horizontal) {
+      let windowScrollLeft = (window.pageXOffset !== undefined) ? window.pageXOffset : (document.documentElement || document.body.parentNode || document.body).scrollLeft;
+      let elTotalWidth = leftPosition(el) + el.offsetWidth;
+      let currentRightPosition = elTotalWidth - windowScrollLeft - window.innerWidth;
+
+      return currentRightPosition;
+    }
+
     let windowScrollTop = (window.pageYOffset !== undefined) ? window.pageYOffset : (document.documentElement || document.body.parentNode || document.body).scrollTop;
     let elTotalHeight = topPosition(el) + el.offsetHeight;
     let currentBottomPosition = elTotalHeight - windowScrollTop - window.innerHeight;
@@ -117,6 +136,7 @@ ReduxInfiniteScroll.propTypes = {
     React.PropTypes.string
   ]),
   threshold: React.PropTypes.number,
+  horizontal: React.PropTypes.bool,
   hasMore: React.PropTypes.bool,
   loadingMore: React.PropTypes.bool,
   loader: React.PropTypes.any,
@@ -142,6 +162,7 @@ ReduxInfiniteScroll.defaultProps = {
   elementIsScrollable: true,
   containerHeight: '100%',
   threshold: 100,
+  horizontal: false,
   hasMore: true,
   loadingMore: false,
   loader: <div style={{textAlign: 'center'}}>Loading...</div>,
