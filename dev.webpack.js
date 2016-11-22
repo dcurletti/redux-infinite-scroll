@@ -33,11 +33,6 @@ config.module = {
 	]
 };
 
-config.externals = {
-	'react': 'React',
-	'react-dom': 'ReactDOM'
-};
-
 config.plugins = [
 	new webpack.optimize.OccurenceOrderPlugin()
 ];
@@ -46,7 +41,5 @@ config.resolve = {
 	// tell webpack which extensions to auto search when it resolves modules. With this,
 	// you'll be able to do `require('./utils')` instead of `require('./utils.js')`
 	extensions: ['', '.js', '.jsx'],
-	// by default, webpack will search in `web_modules` and `node_modules`. Because we're using
-	// Bower, we want it to look in there too
 	modulesDirectories: [ 'node_modules']
 };

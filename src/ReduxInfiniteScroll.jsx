@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 
 //import ImmutablePropTypes from 'react-immutable-proptypes';
 
@@ -117,12 +118,31 @@ export default class ReduxInfiniteScroll extends React.Component {
     return 'redux-infinite-scroll ' + additionalClass;
   }
 
+  _renderWithTransitions() {
+    const allItems = this.props.children.concat(this.props.items);
+
+
+    console.log('animating with tran');
+    return (
+        <ReactCSSTransitionGroup transitionName={this.props.transitionName}
+                                 transitionEnter={this.props.transitionEnter}
+                                 transitionEnterTimeout={this.props.transitionEnterTimeout}
+                                 transitionLeave={this.props.transitionLeave}
+                                 transitionLeaveTimeout={this.props.transitionLeaveTimeout}
+                                 transitionAppear={this.props.transitionAppear}
+                                 transitionAppearTimeout={this.props.transitionAppearTimeout}
+        >
+          {allItems}
+        </ReactCSSTransitionGroup>
+    )
+  }
+
   render () {
     const Holder = this.props.holderType;
 
     return (
-      <Holder className={ this._assignHolderClass() } style={{height: this.props.containerHeight}}>
-        {this._renderOptions()}
+      <Holder className={ this._assignHolderClass() } style={{height: this.props.containerHeight, overflow: 'scroll'}}>
+        {this.props.animateItems ? this._renderWithTransitions() : this._renderOptions()}
         {this.renderLoader()}
       </Holder>
     )
@@ -154,7 +174,15 @@ ReduxInfiniteScroll.propTypes = {
   className: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.func
-  ])
+  ]),
+  animateItems: React.PropTypes.bool,
+  transitionName: React.PropTypes.string,
+  transitionEnter: React.PropTypes.bool,
+  transitionEnterTimeout: React.PropTypes.number,
+  transitionLeave: React.PropTypes.bool,
+  transitionLeaveTimeout: React.PropTypes.number,
+  transitionAppear: React.PropTypes.bool,
+  transitionAppearTimeout: React.PropTypes.number,
 };
 
 ReduxInfiniteScroll.defaultProps = {
@@ -169,5 +197,13 @@ ReduxInfiniteScroll.defaultProps = {
   showLoader: true,
   holderType: 'div',
   children: [],
-  items: []
+  items: [],
+  animateItems: false,
+  transitionName: 'redux-infinite-scroll',
+  transitionEnter: true,
+  transitionEnterTimeout: 2000,
+  transitionLeave: true,
+  transitionLeaveTimeout: 1000,
+  transitionAppear: true,
+  transitionAppearTimeout: 2000
 };

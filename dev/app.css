@@ -1,0 +1,27 @@
+.redux-infinite-scroll-appear {
+    opacity: 0.01;
+}
+
+.redux-infinite-scroll-appear.redux-infinite-scroll-appear-active {
+    opacity: 1;
+    transition: opacity 2000ms ease-in;
+}
+
+
+.redux-infinite-scroll-enter {
+    opacity: 0.01;
+}
+
+.redux-infinite-scroll-enter.redux-infinite-scroll-enter-active {
+    opacity: 1;
+    transition: opacity 2000ms ease-in;
+}
+
+.redux-infinite-scroll-leave {
+    opacity: 1;
+}
+
+.redux-infinite-scroll-leave.redux-infinite-scroll-leave-active {
+    opacity: 0.01;
+    transition: opacity 1000ms ease-in;
+}
