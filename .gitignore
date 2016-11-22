@@ -20,3 +20,7 @@ bower_components
 
 # Other
 .DS_Store
+
+#dev files
+dev/*.js
+
