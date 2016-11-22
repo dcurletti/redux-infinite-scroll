@@ -8,6 +8,7 @@
     "test-watch": "karma start karma.conf.js --single-run=false",
     "transpile": "babel src --out-dir lib",
     "build": "webpack --config production.webpack.js",
+    "dev:build:watch": "webpack --config dev.webpack.js --watch",
     "build:min": "webpack --config min.webpack.js",
     "build:release": "npm run transpile && npm run build && npm run build:min"
   },
@@ -56,5 +57,6 @@
     "react-immutable-proptypes": "^1.7.0"
   },
   "dependencies": {
+    "react-addons-css-transition-group": "^15.0.2"
   }
 }
