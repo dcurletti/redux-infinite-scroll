@@ -131,10 +131,10 @@ function chatReducer(state=initialState, action=undefined) {
 | hasMore  	|  bool 	| no  	| true  	| Whether there are more items waiting to be displayed. Set this to false once all of the items have been passed down to either `items` or `children`.
 | loadingMore |  bool 	| no  	|false| A prop that should be set to `true` by the parent component whenever the `loadMore` function gets invoked, and then toggled to `false` once that function has finished updating the `items` prop.
 | loader  	|  any | no|  Loading... 	| The value of this prop gets injected as the last element of the parent div when `hasMore` `loadingMore` and `showLoader` are all `true`.
-| showLoader  	| bool  	| false  	|  true 	| Whether to show the loader when the `loadingMore` property is `true`
+| showLoader  	| bool  	| no  	|  true 	| Whether to show the loader when the `loadingMore` property is `true`
 | loadMore  	|  function | yes  |undefined| The function is called when the component has reached the `threshold` and `hasMore` is true.
 | holderType | string  	|no|div| The type the loader is rendered as, could be `ul`, `dl`, etc.
-| className | string  	|no|''| Any additional classes to be added to the holder.
+| className | string or function 	|no|''| Any additional classes to be added to the holder.
 | items | array || Immutable List 	|no|[]| The array of elements waiting to be rendered.  Use either this or `children`. **Deprecated.** 
 | children | array || Immutable List 	|no| [] | The array of elements waiting to be rendered. Use either this or `items`.
 
