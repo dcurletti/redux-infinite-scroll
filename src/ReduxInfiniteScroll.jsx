@@ -11,14 +11,14 @@ export default class ReduxInfiniteScroll extends React.Component {
   }
 
   componentDidMount() {
-    this.manageScrollListener();
+    this.updateScrollListener();
   }
 
   componentDidUpdate() {
-    this.manageScrollListener();
+    this.updateScrollListener();
   }
 
-  manageScrollListener() {
+  updateScrollListener() {
     if (!this.props.hasMore || this.props.loadingMore) this.detachScrollListener();
     else this.attachScrollListener();
   }
@@ -28,7 +28,6 @@ export default class ReduxInfiniteScroll extends React.Component {
   }
 
   attachScrollListener() {
-    if (!this.props.hasMore || this.props.loadingMore) return;
     let el = this._findElement();
     el.addEventListener('scroll', this.scrollFunction, true);
     el.addEventListener('resize', this.scrollFunction, true);
