@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import CSSTransitionGroup from "react-transition-group/CSSTransitionGroup";
 
 //import ImmutablePropTypes from 'react-immutable-proptypes';
 
@@ -125,16 +125,16 @@ export default class ReduxInfiniteScroll extends React.Component {
 
     console.log('animating with tran');
     return (
-        <ReactCSSTransitionGroup transitionName={this.props.transitionName}
-                                 transitionEnter={this.props.transitionEnter}
-                                 transitionEnterTimeout={this.props.transitionEnterTimeout}
-                                 transitionLeave={this.props.transitionLeave}
-                                 transitionLeaveTimeout={this.props.transitionLeaveTimeout}
-                                 transitionAppear={this.props.transitionAppear}
-                                 transitionAppearTimeout={this.props.transitionAppearTimeout}
+        <CSSTransitionGroup transitionName={this.props.transitionName}
+                            transitionEnter={this.props.transitionEnter}
+                            transitionEnterTimeout={this.props.transitionEnterTimeout}
+                            transitionLeave={this.props.transitionLeave}
+                            transitionLeaveTimeout={this.props.transitionLeaveTimeout}
+                            transitionAppear={this.props.transitionAppear}
+                            transitionAppearTimeout={this.props.transitionAppearTimeout}
         >
           {allItems}
-        </ReactCSSTransitionGroup>
+        </CSSTransitionGroup>
     )
   }
 
