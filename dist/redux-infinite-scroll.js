@@ -12254,7 +12254,7 @@ return /******/ (function(modules) { // webpackBootstrap
 
 	      return _react2.default.createElement(
 	        Holder,
-	        { className: this._assignHolderClass(), style: { height: this.props.containerHeight, overflow: 'scroll' } },
+	        { className: this._assignHolderClass(), style: { height: this.props.containerHeight } },
 	        this.props.animateItems ? this._renderWithTransitions() : this._renderOptions(),
 	        this.renderLoader()
 	      );
