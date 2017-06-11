@@ -49,6 +49,7 @@
     "karma-sourcemap-loader": "0.3.7",
     "karma-webpack": "1.8.0",
     "phantomjs-prebuilt": "2.1.12",
+    "prop-types": "^15.4.0",
     "react": "^15.4.0",
     "react-addons-css-transition-group": "^15.4.0",
     "react-addons-test-utils": "^15.4.0",
