@@ -1,8 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ReactDOM from 'react-dom';
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
-
-//import ImmutablePropTypes from 'react-immutable-proptypes';
 
 import {topPosition, leftPosition} from './Utilities/DOMPositionUtils';
 
@@ -90,12 +88,6 @@ export default class ReduxInfiniteScroll extends React.Component {
     el.removeEventListener('resize', this.scrollFunction, true);
   }
 
-  _renderOptions() {
-    const allItems = this.props.children.concat(this.props.items);
-
-    return allItems;
-  }
-
   _totalItemsSize() {
     let totalSize;
     totalSize += (this.props.children.size) ? this.props.children.size : this.props.children.length;
@@ -107,10 +99,6 @@ export default class ReduxInfiniteScroll extends React.Component {
     this.detachScrollListener();
   }
 
-  renderLoader() {
-    return (this.props.loadingMore && this.props.showLoader) ? this.props.loader : undefined;
-  }
-
   _assignHolderClass() {
     let additionalClass;
     additionalClass = (typeof this.props.className === 'function') ? this.props.className() : this.props.className;
@@ -118,71 +106,51 @@ export default class ReduxInfiniteScroll extends React.Component {
     return 'redux-infinite-scroll ' + additionalClass;
   }
 
-  _renderWithTransitions() {
-    const allItems = this.props.children.concat(this.props.items);
-
-
-    console.log('animating with tran');
-    return (
-        <ReactCSSTransitionGroup transitionName={this.props.transitionName}
-                                 transitionEnter={this.props.transitionEnter}
-                                 transitionEnterTimeout={this.props.transitionEnterTimeout}
-                                 transitionLeave={this.props.transitionLeave}
-                                 transitionLeaveTimeout={this.props.transitionLeaveTimeout}
-                                 transitionAppear={this.props.transitionAppear}
-                                 transitionAppearTimeout={this.props.transitionAppearTimeout}
-        >
-          {allItems}
-        </ReactCSSTransitionGroup>
-    )
-  }
-
   render () {
     const Holder = this.props.holderType;
 
     return (
-      <Holder className={ this._assignHolderClass() } style={{height: this.props.containerHeight, overflow: 'scroll'}}>
-        {this.props.animateItems ? this._renderWithTransitions() : this._renderOptions()}
-        {this.renderLoader()}
+      <Holder className={ this._assignHolderClass() } style={{height: this.props.containerHeight}}>
+        {this.props.children.concat(this.props.items)}
+        {this.props.loadingMore && this.props.showLoader && this.props.loader}
       </Holder>
     )
   }
 }
 
 ReduxInfiniteScroll.propTypes = {
-  elementIsScrollable: React.PropTypes.bool,
-  containerHeight: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
+  elementIsScrollable: PropTypes.bool,
+  containerHeight: PropTypes.oneOfType([
+    PropTypes.number,
+    PropTypes.string
   ]),
-  threshold: React.PropTypes.number,
-  horizontal: React.PropTypes.bool,
-  hasMore: React.PropTypes.bool,
-  loadingMore: React.PropTypes.bool,
-  loader: React.PropTypes.any,
-  showLoader: React.PropTypes.bool,
-  loadMore: React.PropTypes.func.isRequired,
-  items: React.PropTypes.oneOfType([
+  threshold: PropTypes.number,
+  horizontal: PropTypes.bool,
+  hasMore: PropTypes.bool,
+  loadingMore: PropTypes.bool,
+  loader: PropTypes.any,
+  showLoader: PropTypes.bool,
+  loadMore: PropTypes.func.isRequired,
+  items: PropTypes.oneOfType([
     //ImmutablePropTypes.list,
-    React.PropTypes.array
+    PropTypes.array
   ]),
-  children: React.PropTypes.oneOfType([
+  children: PropTypes.oneOfType([
     //ImmutablePropTypes.list,
-    React.PropTypes.array
+    PropTypes.array
   ]),
-  holderType: React.PropTypes.string,
-  className: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.func
+  holderType: PropTypes.string,
+  className: PropTypes.oneOfType([
+    PropTypes.string,
+    PropTypes.func
   ]),
-  animateItems: React.PropTypes.bool,
-  transitionName: React.PropTypes.string,
-  transitionEnter: React.PropTypes.bool,
-  transitionEnterTimeout: React.PropTypes.number,
-  transitionLeave: React.PropTypes.bool,
-  transitionLeaveTimeout: React.PropTypes.number,
-  transitionAppear: React.PropTypes.bool,
-  transitionAppearTimeout: React.PropTypes.number,
+  transitionName: PropTypes.string,
+  transitionEnter: PropTypes.bool,
+  transitionEnterTimeout: PropTypes.number,
+  transitionLeave: PropTypes.bool,
+  transitionLeaveTimeout: PropTypes.number,
+  transitionAppear: PropTypes.bool,
+  transitionAppearTimeout: PropTypes.number,
 };
 
 ReduxInfiniteScroll.defaultProps = {
@@ -198,7 +166,6 @@ ReduxInfiniteScroll.defaultProps = {
   holderType: 'div',
   children: [],
   items: [],
-  animateItems: false,
   transitionName: 'redux-infinite-scroll',
   transitionEnter: true,
   transitionEnterTimeout: 2000,
