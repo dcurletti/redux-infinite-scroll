@@ -40,7 +40,6 @@ class App extends React.Component {
                        showLoader={true}
                        threshold={50}
                        containerHeight={200}
-                       animateItems={true}
                        items={this._createData()}
           />
         </div>
