@@ -22,7 +22,6 @@ class Shell extends React.Component {
   }
 
   _renderItems() {
-    console.log(this.state.items);
     return this.state.items.map((item) => {
       return (
         <div style={{'height': this.props.itemHeight}}>{item}</div>
@@ -31,7 +30,6 @@ class Shell extends React.Component {
   }
 
   render () {
-    console.log(this);
     return (
       <div style={{overflow:'scroll'}}>
         <ReduxInfiniteScroll containerHeight={this.props.containerHeight}

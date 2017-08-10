@@ -121,8 +121,6 @@ export default class ReduxInfiniteScroll extends React.Component {
   _renderWithTransitions() {
     const allItems = this.props.children.concat(this.props.items);
 
-
-    console.log('animating with tran');
     return (
         <ReactCSSTransitionGroup transitionName={this.props.transitionName}
                                  transitionEnter={this.props.transitionEnter}

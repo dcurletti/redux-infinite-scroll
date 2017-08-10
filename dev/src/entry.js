@@ -20,7 +20,6 @@ class App extends React.Component {
   }
 
   _loadMore() {
-    console.log('loading More');
     this.setState({loadingMore: true}, () => {
       // CB emulates an ajax request
       this.setState({
