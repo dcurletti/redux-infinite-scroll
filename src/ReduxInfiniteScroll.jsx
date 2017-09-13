@@ -118,6 +118,10 @@ export default class ReduxInfiniteScroll extends React.Component {
     return 'redux-infinite-scroll ' + additionalClass;
   }
 
+  _assignHolderId() {
+    return this.props.id || null;
+  }
+
   _renderWithTransitions() {
     const allItems = this.props.children.concat(this.props.items);
 
@@ -139,9 +143,22 @@ export default class ReduxInfiniteScroll extends React.Component {
 
   render () {
     const Holder = this.props.holderType;
+    const holderId = this._assignHolderId();
+
+    const holderAttributes = {
+      className: this._assignHolderClass(),
+      style: {
+        height: this.props.containerHeight,
+        overflow: 'scroll'
+      }
+    };
+
+    if (holderId) {
+      holderAttributes.id = holderId;
+    }
 
     return (
-      <Holder className={ this._assignHolderClass() } style={{height: this.props.containerHeight, overflow: 'scroll'}}>
+      <Holder {...holderAttributes}>
         {this.props.animateItems ? this._renderWithTransitions() : this._renderOptions()}
         {this.renderLoader()}
       </Holder>
@@ -171,6 +188,7 @@ ReduxInfiniteScroll.propTypes = {
     React.PropTypes.array
   ]),
   holderType: React.PropTypes.string,
+  id: React.PropTypes.string,
   className: React.PropTypes.oneOfType([
     React.PropTypes.string,
     React.PropTypes.func
@@ -186,6 +204,7 @@ ReduxInfiniteScroll.propTypes = {
 };
 
 ReduxInfiniteScroll.defaultProps = {
+  id: '',
   className: '',
   elementIsScrollable: true,
   containerHeight: '100%',
