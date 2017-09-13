@@ -47,15 +47,15 @@ The difference is due to the `ReduxInfiniteScroll` being an ES6 module and there
 
 ## Usage
 
-In order to use it in your React app, simply import it and follow the example below.  The component expects to receive 
-child elements that it then injects into the DOM.  The `loadMore` prop expects a function that requests for more 
-items to be loaded once the container/window has reached the bottom `threshold`.  If there are no more items left to 
-be passed to the component, make sure to set the `hasMore` prop to be `false`.  **Important** If you are using 
+In order to use it in your React app, simply import it and follow the example below.  The component expects to receive
+child elements that it then injects into the DOM.  The `loadMore` prop expects a function that requests for more
+items to be loaded once the container/window has reached the bottom `threshold`.  If there are no more items left to
+be passed to the component, make sure to set the `hasMore` prop to be `false`.  **Important** If you are using
 an element as the scrollable component, rather than the window, you MUST pass a fixed height to the `containerHeight`
 prop.
 
 ##### ES6 format
- 
+
 ```javascript
 
 // MessageList.jsx
@@ -67,7 +67,7 @@ class MessageList extends Component {
   _loadMore() {
     this.props.dispatch(ChatActions.fetchMessages())
   }
-  
+
   _renderMessages() {
     return _.map(this.props.messages, (msg) => {
       return(
@@ -75,7 +75,7 @@ class MessageList extends Component {
       )
     })
   }
-  
+
   render() {
     return (
         <InfiniteScroll
@@ -135,6 +135,7 @@ function chatReducer(state=initialState, action=undefined) {
 | loadMore  	|  function | yes  |undefined| The function is called when the component has reached the `threshold` and `hasMore` is true.
 | holderType | string  	|no|div| The type the loader is rendered as, could be `ul`, `dl`, etc.
 | className | string  	|no|''| Any additional classes to be added to the holder.
+| id | string  	|no|''| The id attribute that the parent component which holds items/children will have.
 | items | array | no | []	| The array of elements waiting to be rendered.  Use either this or `children`. **Deprecated.**
 | children | array | no | []  | The array of elements waiting to be rendered. Use either this or `items`.
 
