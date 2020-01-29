@@ -149,41 +149,41 @@ export default class ReduxInfiniteScroll extends React.Component {
   }
 }
 
-ReduxInfiniteScroll.propTypes = {
-  elementIsScrollable: React.PropTypes.bool,
-  containerHeight: React.PropTypes.oneOfType([
-    React.PropTypes.number,
-    React.PropTypes.string
-  ]),
-  threshold: React.PropTypes.number,
-  horizontal: React.PropTypes.bool,
-  hasMore: React.PropTypes.bool,
-  loadingMore: React.PropTypes.bool,
-  loader: React.PropTypes.any,
-  showLoader: React.PropTypes.bool,
-  loadMore: React.PropTypes.func.isRequired,
-  items: React.PropTypes.oneOfType([
-    //ImmutablePropTypes.list,
-    React.PropTypes.array
-  ]),
-  children: React.PropTypes.oneOfType([
-    //ImmutablePropTypes.list,
-    React.PropTypes.array
-  ]),
-  holderType: React.PropTypes.string,
-  className: React.PropTypes.oneOfType([
-    React.PropTypes.string,
-    React.PropTypes.func
-  ]),
-  animateItems: React.PropTypes.bool,
-  transitionName: React.PropTypes.string,
-  transitionEnter: React.PropTypes.bool,
-  transitionEnterTimeout: React.PropTypes.number,
-  transitionLeave: React.PropTypes.bool,
-  transitionLeaveTimeout: React.PropTypes.number,
-  transitionAppear: React.PropTypes.bool,
-  transitionAppearTimeout: React.PropTypes.number,
-};
+// ReduxInfiniteScroll.propTypes = {
+//   elementIsScrollable: React.PropTypes.bool,
+//   containerHeight: React.PropTypes.oneOfType([
+//     React.PropTypes.number,
+//     React.PropTypes.string
+//   ]),
+//   threshold: React.PropTypes.number,
+//   horizontal: React.PropTypes.bool,
+//   hasMore: React.PropTypes.bool,
+//   loadingMore: React.PropTypes.bool,
+//   loader: React.PropTypes.any,
+//   showLoader: React.PropTypes.bool,
+//   loadMore: React.PropTypes.func.isRequired,
+//   items: React.PropTypes.oneOfType([
+//     //ImmutablePropTypes.list,
+//     React.PropTypes.array
+//   ]),
+//   children: React.PropTypes.oneOfType([
+//     //ImmutablePropTypes.list,
+//     React.PropTypes.array
+//   ]),
+//   holderType: React.PropTypes.string,
+//   className: React.PropTypes.oneOfType([
+//     React.PropTypes.string,
+//     React.PropTypes.func
+//   ]),
+//   animateItems: React.PropTypes.bool,
+//   transitionName: React.PropTypes.string,
+//   transitionEnter: React.PropTypes.bool,
+//   transitionEnterTimeout: React.PropTypes.number,
+//   transitionLeave: React.PropTypes.bool,
+//   transitionLeaveTimeout: React.PropTypes.number,
+//   transitionAppear: React.PropTypes.bool,
+//   transitionAppearTimeout: React.PropTypes.number,
+// };
 
 ReduxInfiniteScroll.defaultProps = {
   className: '',
