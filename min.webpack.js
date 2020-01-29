@@ -6,6 +6,6 @@ config.output = _.merge(config.output, {
   filename: 'redux-infinite-scroll.min.js'
 });
 
-config.plugins.push(
-  new webpack.optimize.UglifyJsPlugin({minimize: true})
-);
+// config.plugins.push(
+//   new webpack.optimize.UglifyJsPlugin({minimize: true})
+// );

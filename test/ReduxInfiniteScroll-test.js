@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import TestUtils from 'react-addons-test-utils';
+import ReactReactTestUtils from 'react-dom/test-utils';
 import ReduxInfiniteScroll from '../src/ReduxInfiniteScroll';
 
 class Shell extends React.Component {
@@ -53,7 +53,7 @@ describe('ReduxInfiniteScroll', () => {
     it('defaults to 100%', () => {
       const reactElement = <ReduxInfiniteScroll loadMore={function(){}}
                                                 items={[]}/>;
-      const render = TestUtils.renderIntoDocument(reactElement);
+      const render = ReactTestUtils.renderIntoDocument(reactElement);
       const node = ReactDOM.findDOMNode(render);
       expect(node.style.height).toEqual('100%');
     });
@@ -62,7 +62,7 @@ describe('ReduxInfiniteScroll', () => {
       const reactElement = <ReduxInfiniteScroll containerHeight="500px"
                                                 loadMore={function(){}}
                                                 items={[]}/>;
-      const render = TestUtils.renderIntoDocument(reactElement);
+      const render = ReactTestUtils.renderIntoDocument(reactElement);
       const node = ReactDOM.findDOMNode(render);
       expect(node.style.height).toEqual('500px');
     });
@@ -84,7 +84,7 @@ describe('ReduxInfiniteScroll', () => {
       expect(scrollNode.children.length).toEqual(4)
 
       scrollNode.scrollTop = 101;
-      TestUtils.Simulate.scroll(scrollNode, {
+      ReactTestUtils.Simulate.scroll(scrollNode, {
         target: scrollNode
       });
 
@@ -110,7 +110,7 @@ describe('ReduxInfiniteScroll', () => {
       expect(scrollNode.children.length).toEqual(4)
 
       scrollNode.scrollTop = 100;
-      TestUtils.Simulate.scroll(scrollNode, {
+      ReactTestUtils.Simulate.scroll(scrollNode, {
         target: scrollNode
       });
 
