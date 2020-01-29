@@ -1,6 +1,6 @@
 {
   "name": "redux-infinite-scroll",
-  "version": "1.0.9",
+  "version": "2.0.1",
   "description": "React infinite scroll component designed for a Redux data-flow.",
   "main": "lib/ReduxInfiniteScroll.js",
   "scripts": {
