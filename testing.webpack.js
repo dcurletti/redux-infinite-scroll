@@ -1,6 +1,6 @@
 // This entire methodology is derived from the following blog post:
 // http://kentor.me/posts/testing-react-and-flux-applications-with-karma-and-webpack/
-import 'babel-polyfill';
+import "@babel/polyfill";
 
 // Create a Webpack require context so we can dynamically require our
 // project's modules. Exclude test files in this context.

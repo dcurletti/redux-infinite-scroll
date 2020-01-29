@@ -13,16 +13,16 @@ module.exports = function(config) {
     webpack: {
       devtool: 'inline-source-map',
       module: {
-        loaders: [
+        rules: [
           {
             test: /\.jsx?$/,
             exclude: /node_modules/,
-            loader: 'babel'
+            loader: 'babel-loader'
           }
         ]
       },
       resolve: {
-        extensions: ['', '.js', '.jsx']
+        extensions: [ '.js', '.jsx']
       },
       watch: true
     },

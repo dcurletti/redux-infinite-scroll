@@ -14,7 +14,7 @@ config.externals = {
   'react-dom': 'ReactDOM'
 };
 
-config.module.loaders.push(
+config.module.rules.push(
   {
     test: /\.jsx?$/,
     exclude: /node_modules/,
@@ -23,5 +23,5 @@ config.module.loaders.push(
 );
 
 config.plugins.push(
-  new webpack.optimize.OccurenceOrderPlugin()
+  new webpack.optimize.OccurrenceOrderPlugin()
 );

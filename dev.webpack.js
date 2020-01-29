@@ -24,7 +24,7 @@ config.output = {
 };
 
 config.module = {
-	loaders: [
+	rules: [
 		{
 			test: /\.jsx?$/,
 			exclude: /node_modules/,
@@ -34,12 +34,12 @@ config.module = {
 };
 
 config.plugins = [
-	new webpack.optimize.OccurenceOrderPlugin()
+	new webpack.optimize.OccurrenceOrderPlugin()
 ];
 
 config.resolve = {
 	// tell webpack which extensions to auto search when it resolves modules. With this,
 	// you'll be able to do `require('./utils')` instead of `require('./utils.js')`
-	extensions: ['', '.js', '.jsx'],
-	modulesDirectories: [ 'node_modules']
+	extensions: ['.js', '.jsx'],
+	// modulesDirectories: [ 'node_modules']
 };
